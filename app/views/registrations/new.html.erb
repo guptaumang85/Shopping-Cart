@@ -1,0 +1,58 @@
+<h1>Create new account here</h1>
+<%= form_for :user, url: registrations_path do |f| %>
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email%>
+  </p>
+
+  <p>
+    <%= f.label :password %><br>
+     <%= f.password_field :password %>
+  </p>
+
+
+  <p>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </p>
+
+  <p>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </p>
+
+  
+  <p>
+    <%= f.label :date_of_birth %><br>
+    <%= f.date_field :date %>
+  </p>
+
+
+  <p>
+    <%= f.label :Pin_code %><br>
+    <%= f.text_field :Pin_code %>
+  </p>
+
+  <p>
+    <%= f.label :contact_number %><br>
+    <%= f.text_field :contact_number %>
+  </p>
+
+  <p>
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </p>
+
+  <p>
+    <%= f.label :street %><br>
+    <%= f.text_field :street %>
+  </p>
+
+ 
+  <div class="clearfix">
+    <%= f.button :Cancel %>
+    <%= f.submit :"Sign Up" %>
+  </div>
+
+
+<% end %>
