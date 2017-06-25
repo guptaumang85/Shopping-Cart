@@ -9,6 +9,8 @@ class RegistrationsController < ApplicationController
   	redirect_to @user
 	
 	end
+	def index
+	end
 
 
 	private
