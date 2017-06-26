@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170626095156) do
     t.string "state"
     t.string "city"
     t.string "street"
-    t.integer "pincode"
+    t.integer "pin_code"
     t.bigint "registration_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
