@@ -1,3 +1,0 @@
-class ShippingAddress < ApplicationRecord
-	
-end
