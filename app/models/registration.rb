@@ -5,7 +5,19 @@ class Registration < ApplicationRecord
 	validates :password, length: { in: 6..20 }
 	validates :last_name, presence: true
 	validates :first_name, presence: true
-	validates_format_of :date_of_birth, :with => /\d{2}\/\d{2}\/\d{4}/, :message => "^Date must be in the following format: mm/dd/yyyy"
 	validates :contact_number,uniqueness: true, presence: true, numericality: true
+	validates :mydate_is_date?,presence: true
+	private
+
+  def mydate_is_date?
+    if !date_of_birth.is_a?(Date)
+      errors.add(:date_of_birth, 'must be a valid date') 
+    end
+  end
+	#before_validation :nitesh
+
+#	def nitesh
+#		binding.pry
+#	end
 
 end

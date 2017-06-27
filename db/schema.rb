@@ -80,8 +80,8 @@ ActiveRecord::Schema.define(version: 20170626095156) do
     t.string "password"
     t.string "last_name"
     t.string "first_name"
-    t.date "date_of_birth"
-    t.integer "contact_number"
+    t.datetime "date_of_birth"
+    t.bigint "contact_number"
   end
 
   create_table "shipping_addresses", force: :cascade do |t|
