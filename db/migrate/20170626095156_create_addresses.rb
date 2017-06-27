@@ -1,13 +1,15 @@
 class CreateAddresses < ActiveRecord::Migration[5.1]
+
   def change
     create_table :addresses do |t|
-    	t.string :state
-    	t.string :city
-    	t.string :street
-    	t.integer :pin_code
-    	t.references :registration
+      t.string :state
+      t.string :city
+      t.string :street
+      t.integer :pin_code
+      t.references :user
 
       t.timestamps
     end
   end
+  
 end

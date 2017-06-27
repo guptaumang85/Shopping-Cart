@@ -1,5 +1,8 @@
-<h1>Create new account here</h1>
+<% provide(:title, 'Sign up') %>
+<h1>Sign up</h1>
+
 <%= form_for :user, url: signup_path do |f| %>
+
   <p>
     <%= f.label :email %><br>
     <%= f.text_field :email%>
@@ -10,7 +13,6 @@
      <%= f.password_field :password %>
   </p>
 
-
   <p>
     <%= f.label :last_name %><br>
     <%= f.text_field :last_name %>
@@ -20,14 +22,11 @@
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
   </p>
-
   
   <p>
     <%= f.label :date_of_birth %><br>
     <%= f.date_field :date_of_birth %>
   </p>
-
-
 
   <p>
     <%= f.label :contact_number %><br>
@@ -35,11 +34,9 @@
   </p>
 
 
- 
-  <div class="clearfix">
+   <div class="clearfix">
     <%= f.button :Cancel %>
     <%= f.submit :"Sign Up" %>
   </div>
-
 
 <% end %>
