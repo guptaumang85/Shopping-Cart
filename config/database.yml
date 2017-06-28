@@ -2,7 +2,7 @@ development:
  adapter: postgresql
  encoding: unicode
  host: localhost
- database: shoppingCart
+ database: shoppingCart1
  pool: 15
  timeout: 5000
  username: postgres

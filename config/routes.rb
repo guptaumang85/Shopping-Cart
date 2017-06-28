@@ -5,9 +5,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'session#destroy'
   get		 '/signup',	 to: 'users#new'
   post   '/signup',  to: 'users#create'
- 
-
-
+  
   resources :session#, :only => [:new, :create, :destroy]
   #resources :registrations
   root 'welcome#new'

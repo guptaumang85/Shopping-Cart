@@ -2,7 +2,7 @@
 <h1>Sign up</h1>
 
 <%= form_for :user, url: signup_path do |f| %>
-
+   <%= render 'shared/error_messages' %>
   <p>
     <%= f.label :email %><br>
     <%= f.text_field :email%>
@@ -32,7 +32,6 @@
     <%= f.label :contact_number %><br>
     <%= f.text_field :contact_number %>
   </p>
-
 
    <div class="clearfix">
     <%= f.button :Cancel %>

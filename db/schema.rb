@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626095156) do
+ActiveRecord::Schema.define(version: 20170627164947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,20 +20,10 @@ ActiveRecord::Schema.define(version: 20170626095156) do
     t.string "city"
     t.string "street"
     t.integer "pin_code"
-    t.bigint "registration_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["registration_id"], name: "index_addresses_on_registration_id"
-  end
-
-  create_table "final_invoices", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "invoice_details", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "order_infos", force: :cascade do |t|
@@ -75,27 +65,13 @@ ActiveRecord::Schema.define(version: 20170626095156) do
     t.boolean "in_stock"
   end
 
-  create_table "registrations", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "password"
+  create_table "users", force: :cascade do |t|
+    t.string "email", limit: 50, null: false
+    t.string "password_digest"
     t.string "last_name"
     t.string "first_name"
     t.datetime "date_of_birth"
     t.bigint "contact_number"
-  end
-
-  create_table "shipping_addresses", force: :cascade do |t|
-    t.bigint "registration_id"
-    t.string "to_city"
-    t.string "to_street"
-    t.integer "to_pincode"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["registration_id"], name: "index_shipping_addresses_on_registration_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
