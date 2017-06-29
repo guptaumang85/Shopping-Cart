@@ -8,7 +8,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to signup_url
+      log_in @user
+      flash[:success] = "You have sucessfuly log in"
+      redirect_to root_url
     else
       render 'new'
     end
@@ -19,11 +21,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-
   private
   def user_params
-    #binding.pry
-    params.require(:user).permit(:email, :password, :last_name, :first_name, :date_of_birth, :contact_number)
+    params.require(:user).permit(:email, :password, :last_name, :first_name, :date_of_birth, :contact_number, :user_type)
   end
   
 end

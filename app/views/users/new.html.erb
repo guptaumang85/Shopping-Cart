@@ -14,6 +14,10 @@
   </p>
 
   <p>
+    <%= f.select :user_type, '<option value="1">Buyer</option><option value="2">Seller</option>'.html_safe %>
+  </p>
+
+  <p>
     <%= f.label :last_name %><br>
     <%= f.text_field :last_name %>
   </p>

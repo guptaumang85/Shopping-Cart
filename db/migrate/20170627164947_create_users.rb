@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
     	t.string :first_name
     	t.datetime :date_of_birth
     	t.bigint :contact_number
+      t.integer :user_type
 
 
       t.timestamps

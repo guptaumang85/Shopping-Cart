@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20170627164947) do
     t.string "first_name"
     t.datetime "date_of_birth"
     t.bigint "contact_number"
+    t.integer "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
