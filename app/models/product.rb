@@ -4,6 +4,5 @@ class Product < ApplicationRecord
 	validates :name, presence: true
 	validates :price, presence: true
 	validates :description, presence: true
-	validates :in_stock, presence: true
 
 end

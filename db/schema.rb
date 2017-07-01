@@ -56,13 +56,11 @@ ActiveRecord::Schema.define(version: 20170627164947) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "product_name"
-    t.integer "product_price"
-    t.text "product_description"
-    t.string "product_images"
+    t.string "name"
+    t.integer "price"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "in_stock"
   end
 
   create_table "users", force: :cascade do |t|

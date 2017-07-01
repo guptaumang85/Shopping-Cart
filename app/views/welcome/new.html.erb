@@ -1,8 +1,2 @@
 <h1>Welcome to Cart Application</h1>
-
-<% if current_user.present? %>
-<%= link_to "log out", logout_path, :method => :delete %>
-	<p>New user? <%= link_to "Sign up now!", signup_path %></p>
-<% else %>
-	<p>To sign in <%= link_to "click here", login_path %></p>
-<% end %>
+<li><%= link_to "Products", products_path %></li>

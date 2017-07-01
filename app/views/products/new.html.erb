@@ -1,20 +1,22 @@
-<%= form_for :article do |f| %>
+<%= form_for :product, url: products_path do |f| %>
   <p>
     <%= f.label :product_name %><br>
-    <%= f.text_field :product_name %>
+    <%= f.text_field :name %>
   </p>
  
   <p>
     <%= f.label :product_price %><br>
-    <%= f.text_field :product_price %>
+    <%= f.text_field :price %>
   </p>
 
   <p>
     <%= f.label :product_description %><br>
-    <%= f.text_area :product_description %>
+    <%= f.text_area :description %>
   </p>
- 
+
+
   <p>
     <%= f.submit %>
   </p>
+  
 <% end %>

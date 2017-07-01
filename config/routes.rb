@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'session#destroy'
   get		 '/signup',	 to: 'users#new'
   post   '/signup',  to: 'users#create'
-  
+  get		 '/user/edit', to: 'users#edit'
+  post    '/user/edit', to: 'users#update'
   resources :products
   root 'welcome#new'
 

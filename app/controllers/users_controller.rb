@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_logout, only: [:new, :create]
 
   def show
     @user = User.find(params[:id])
@@ -19,6 +20,19 @@ class UsersController < ApplicationController
 
   def new 
     @user = User.new
+  end
+
+  def edit
+     @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to root_url
+    else
+      render 'edit'
+    end
   end
 
   private
