@@ -14,17 +14,17 @@ class SessionController < ApplicationController
       redirect_to root_url and return
 
     else
-      flash.now[:error] = 'Invalid email/password combination' 
-      render 'new' 
+      flash.now[:error] = 'Invalid email/password combination'
+      render 'new'
     end
-    
-  end 
+
+  end
 
   def destroy
     log_out
     flash[:success] = "You have sucessfuly logged out"
     redirect_to root_url and return
   end
-  
+
 end
 

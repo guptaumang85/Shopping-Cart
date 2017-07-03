@@ -14,6 +14,7 @@ gem 'pry'
 gem 'bcrypt-ruby'
 gem 'bootstrap-sass'
 gem 'rails_bootstrap_navbar'
+gem 'carrierwave'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

@@ -1,6 +1,11 @@
+
 <p>
   <strong>Name:</strong>
   <%= @product.name %>
+</p>
+
+<p>
+	<%= image_tag @product.image_url.to_s, :size => "200x200" %>
 </p>
  
 <p>
