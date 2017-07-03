@@ -7,11 +7,11 @@ class User < ApplicationRecord
 	validates :last_name, presence: true
 	validates :first_name, presence: true
 	validates :contact_number, presence: true, uniqueness: true, length: { is: 10 }
-	validate  :mydate_is_date?
+	validate  :validate_date_of_birth
 
 	private
 
-  def mydate_is_date?
+  def validate_date_of_birth
 		errors.add(:date_of_birth, 'must be a valid date') if date_of_birth > Time.zone.today
   end
 
