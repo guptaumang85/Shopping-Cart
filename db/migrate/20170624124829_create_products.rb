@@ -9,9 +9,5 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.timestamps
     end
   end
-<<<<<<< Updated upstream
-  
-=======
 
->>>>>>> Stashed changes
 end
