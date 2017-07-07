@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :orders
 
   validates :email, presence: true, uniqueness: true
-  validates :password_digest, presence: true
+  validates :password, presence: true
   validates :last_name, presence: true
   validates :first_name, presence: true
   validates :contact_number, presence: true, uniqueness: true, length: { is: 10 }
@@ -14,7 +14,7 @@ class User < ApplicationRecord
   private
 
   def validate_date_of_birth
-    errors.add(:date_of_birth, 'must be a valid date') if date_of_birth > Time.zone.today
+    errors.add(:date_of_birth, 'must be a valid date') if date_of_birth.present? && date_of_birth > Time.zone.today
   end
 
 end

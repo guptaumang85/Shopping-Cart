@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  require 'sidekiq/web'
 	get    '/login',   to: 'session#new'
   post   '/login',   to: 'session#create'
   delete '/logout',  to: 'session#destroy'
@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   get		 '/user/edit', to: 'users#edit'
   post    '/user/edit', to: 'users#update'
+
+
+  mount Sidekiq::Web => '/sidekiq'
 
   resources :carts, except: [:new, :create] do
     member do

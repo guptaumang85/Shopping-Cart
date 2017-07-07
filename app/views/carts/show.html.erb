@@ -5,6 +5,7 @@
     <th>Price</th>
     <th>Quantity</th>
     <th>Total Price</th>
+    <th>Delete</th>
   </thead>
   <tbody>    
     <% @cart.cart_products.each do |cart_product| %>
@@ -13,15 +14,18 @@
         <td><%= number_to_currency(cart_product.product.price) %></td>
         <td><%= cart_product.quantity %></td>
         <td><%= number_to_currency(cart_product.total_price) %></td>
+        <td><%= link_to "Delete Product", cart_path(cart_product), method: :delete %></td>
       </tr>
     <% end %>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Total: <%= number_to_currency(@cart.total) %></td>
-      <td><%= link_to "Proceed to checkout", new_order_path %><br></td>
-    </tr>
+    <%if @cart.cart_products.present? %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Total: <%= number_to_currency(@cart.total) %></td>
+        <td><b><%= button_to "Proceed to checkout", new_order_path,:class => "inbox-sf-add-btn tip", method: :get%><br></b></td>
+      </tr>
+    <% end %>
 
   </tbody>
 </table>

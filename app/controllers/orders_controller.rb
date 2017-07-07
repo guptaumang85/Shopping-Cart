@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action  :current_cart, only: [:new, :create, :show]
+  before_action  :current_cart, only: [:create]
 
   def new
     @order = Order.new
@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     @order.status = "In Progress"
     create_order_list(@order)
     if @order.save
-      UserMailer.order_confirmation(@order).deliver
+      UserNotifyWorker.perform_async(@order.id)
       flash[:success] = "Your order has been successfully placed"
       clear_cart_and_cart_products
       redirect_to order_path(@order.id)
