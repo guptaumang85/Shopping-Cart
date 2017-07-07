@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703091440) do
+ActiveRecord::Schema.define(version: 20170707064133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,21 @@ ActiveRecord::Schema.define(version: 20170703091440) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "cart_products", force: :cascade do |t|
+    t.integer "quantity", default: 1
+    t.integer "product_id"
+    t.integer "cart_id"
+    t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "order_infos", force: :cascade do |t|
@@ -49,17 +64,27 @@ ActiveRecord::Schema.define(version: 20170703091440) do
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
 
-  create_table "order_statuses", force: :cascade do |t|
-    t.string "order_status"
+  create_table "order_lists", force: :cascade do |t|
+    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_id"
+    t.integer "qty"
+    t.float "price"
+    t.index ["order_id"], name: "index_order_lists_on_order_id"
+    t.index ["product_id"], name: "index_order_lists_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.bigint "order_info_id"
+    t.string "name"
+    t.string "email"
+    t.string "address"
+    t.string "pay_method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_info_id"], name: "index_orders_on_order_info_id"
+    t.bigint "user_id"
+    t.string "status"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -69,6 +94,7 @@ ActiveRecord::Schema.define(version: 20170703091440) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.integer "quantity"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,7 +104,7 @@ ActiveRecord::Schema.define(version: 20170703091440) do
     t.string "first_name"
     t.datetime "date_of_birth"
     t.bigint "contact_number"
-    t.integer "user_type"
+    t.string "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -15,6 +15,10 @@ gem 'bcrypt-ruby'
 gem 'bootstrap-sass'
 gem 'rails_bootstrap_navbar'
 gem 'carrierwave'
+gem 'letter_opener'
+gem 'figaro'
+gem 'exception_notification'
+gem 'sidekiq'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -67,5 +71,4 @@ group :development, :test do
 end
 group :test do
   gem 'launchy'
-  gem 'selenium-webdriver'
 end

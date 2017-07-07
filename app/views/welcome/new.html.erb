@@ -1,34 +1,68 @@
 <h1>Welcome to Cart Application</h1>
 <%if logged_in? %>
-  <table>
-    <tr>
+  <% if user_admin? %>
+    <table class="table">
+      <thead>
+        <th>Name</th>
+        <th>Price</th>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.price %></td>
+            <td><%= link_to 'Show', product_path(product) %></td>
+            <td><%= link_to 'Edit',edit_product_path(product) %>
+            <td>
+              <%= form_for :cart,  url: add_product_cart_path(:id) do |f| %>
+                <%= f.number_field :quantity , min: 1 , max: product.quantity, value: 1, number: true%>
+                <%= f.hidden_field :id, :value => product.id %>
+                <%= f.submit "Add To Cart"%>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'Add Product', new_product_path %>
+  <% else %>
+    <table class="table">
+      <thead>
+        <th>Name</th>
+        <th>Price</th>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.price %></td>
+            <td><%= link_to 'Show', product_path(product) %></td>
+            <td>
+              <%= form_for :cart,  url: add_product_cart_path(:id) do |f| %>
+                <%= f.number_field :quantity , min: 1 , max: product.quantity, value: 1, number: true%>
+                <%= f.hidden_field :id, :value => product.id %>
+                <%= f.submit "Add To Cart"%>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+<% else %>
+  <table class="table">
+    <thead>
       <th>Name</th>
       <th>Price</th>
-    </tr>
- 
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.price %></td>
-        <td><%= link_to 'Show', product_path(product) %></td>
-      </tr>
-    <% end %>
-  </table>
-  <%= link_to 'Add Product', new_product_path %>
-  <li><%= link_to "Back", root_path %></li>
-  <%else %>
-    <table>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-    </tr>
- 
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.price %></td>
-        <td><%= link_to 'Show', product_path(product) %></td>
-      </tr>
-    <% end %>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td><%= link_to 'Show', product_path(product) %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 <% end %>

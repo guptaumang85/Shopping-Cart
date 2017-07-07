@@ -1,5 +1,4 @@
 class SessionController < ApplicationController
-
   before_action :require_logout, only: [:new, :create]
   before_action :require_session, only: [:destroy]
 
@@ -17,7 +16,6 @@ class SessionController < ApplicationController
       flash.now[:error] = 'Invalid email/password combination'
       render 'new'
     end
-
   end
 
   def destroy
@@ -27,4 +25,3 @@ class SessionController < ApplicationController
   end
 
 end
-

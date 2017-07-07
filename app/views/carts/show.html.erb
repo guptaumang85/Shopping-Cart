@@ -1,0 +1,27 @@
+<h2>Cart show</h2>
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total Price</th>
+  </thead>
+  <tbody>    
+    <% @cart.cart_products.each do |cart_product| %>
+      <tr>
+        <td><%= cart_product.product.name %></td>
+        <td><%= number_to_currency(cart_product.product.price) %></td>
+        <td><%= cart_product.quantity %></td>
+        <td><%= number_to_currency(cart_product.total_price) %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Total: <%= number_to_currency(@cart.total) %></td>
+      <td><%= link_to "Proceed to checkout", new_order_path %><br></td>
+    </tr>
+
+  </tbody>
+</table>
