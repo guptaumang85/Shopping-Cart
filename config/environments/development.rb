@@ -68,5 +68,10 @@ Rails.application.configure do
   #   :sender_address => %{"notifier" <notifier@example.com>},
   #   :exception_recipients => %w{ugupta@grepruby.com}
   # }
+  begin
+    require 'minitest/autorun'
+    rescue LoadError => e
+    raise e unless ENV['RAILS_ENV'] == "production"
+  end
 
 end
