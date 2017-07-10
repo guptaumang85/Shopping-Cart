@@ -5,6 +5,6 @@ class Cart < ApplicationRecord
   belongs_to :user
 
   def total
-	  self.cart_products.map(&:total_price).sum
+    self.cart_products.map(&:total_price).sum
   end
 end

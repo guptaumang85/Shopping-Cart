@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action  :current_cart, only: [:create]
+  before_action :current_cart, only: [:create]
+  before_action :require_login
 
   def new
     @order = Order.new
@@ -18,7 +19,6 @@ class OrdersController < ApplicationController
     @order.status = "In Progress"
     create_order_list(@order)
     if @order.save
-      UserNotifyWorker.perform_async(@order.id)
       flash[:success] = "Your order has been successfully placed"
       clear_cart_and_cart_products
       redirect_to order_path(@order.id)
@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:name, :email, :address, :pay_method, :status)
+    params.require(:order).permit(:name, :email, :address, :status)
   end
 
   def create_order_list order

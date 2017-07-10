@@ -3,6 +3,7 @@ class OrderList < ApplicationRecord
   belongs_to :product
 
   def product_price
-    qty*price
+    qty * price
   end
+
 end

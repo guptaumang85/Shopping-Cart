@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
+
+  after_save :send_confirm_mail
+
   has_many :addresses
   has_one  :cart
   has_many :orders
@@ -15,6 +18,10 @@ class User < ApplicationRecord
 
   def validate_date_of_birth
     errors.add(:date_of_birth, 'must be a valid date') if date_of_birth.present? && date_of_birth > Time.zone.today
+  end
+
+  def send_confirm_mail
+    UserNotifyWorker.perform_async(self.id)
   end
 
 end

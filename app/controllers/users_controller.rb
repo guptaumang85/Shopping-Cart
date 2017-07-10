@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserNotifyWorker.perform_async(@user.id)
       log_in @user
       flash[:success] = "You have sucessfuly log in"
       redirect_to root_url
@@ -37,7 +36,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :last_name, :first_name, :date_of_birth, :contact_number, :user_type)
+    params.require(:user).permit(:email, :password, :last_name, :first_name, :date_of_birth, :contact_number)
   end
 
 end

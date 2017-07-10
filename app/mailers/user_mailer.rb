@@ -10,4 +10,5 @@ class UserMailer < ApplicationMailer
     @order = order
     mail to: @order.email, subject: "Order Confirmation"
   end
+
 end

@@ -2,9 +2,6 @@ class SessionController < ApplicationController
   before_action :require_logout, only: [:new, :create]
   before_action :require_session, only: [:destroy]
 
-  def new
-  end
-
   def create
     user = User.find_by(email: params[:session][:email].downcase)
 

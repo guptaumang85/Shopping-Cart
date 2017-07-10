@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  has_many :cart
+  belongs_to :cart
 
   validates :name, presence: true
   validates :price, presence: true
