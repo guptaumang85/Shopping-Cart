@@ -64,14 +64,14 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # config.middleware.use ExceptionNotification::Rack, :email => {
-  #   :sender_address => %{"notifier" <notifier@example.com>},
-  #   :exception_recipients => %w{ugupta@grepruby.com}
-  # }
-  begin
-    require 'minitest/autorun'
-    rescue LoadError => e
-    raise e unless ENV['RAILS_ENV'] == "production"
-  end
+  config.middleware.use ExceptionNotification::Rack, :email => {
+    :sender_address => %{"notifier" <notifier@example.com>},
+    :exception_recipients => %w{ugupta@grepruby.com}
+  }
+  # begin
+  #   require 'minitest/autorun'
+  #   rescue LoadError => e
+  #   raise e unless ENV['RAILS_ENV'] == "production"
+  # end
 
 end
