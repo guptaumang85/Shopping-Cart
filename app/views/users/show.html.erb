@@ -2,9 +2,10 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
-	<strong>Password:</strong>
-  <%= @user.password %>
 
   <strong>Last Name:</strong>
   <%= @user.last_name %>
  </p>
+ <p>
+	<%= image_tag @user.picture.image_url, :size => "200x200" %>
+</p>

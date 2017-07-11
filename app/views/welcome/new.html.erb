@@ -12,7 +12,7 @@
             <td><%= product.name %></td>
             <td><%= product.price %></td>
             <td><%= link_to 'Show', product_path(product) %></td>
-            <td><%= link_to 'Edit',edit_product_path(product) %>
+            <td><%= link_to 'Edit',edit_product_path(product), remote: true %>
             <td>
               <%= form_for :cart,  url: add_product_cart_path(:id) do |f| %>
                 <%= f.number_field :quantity , min: 1 , max: product.quantity, value: 1, number: true%>
@@ -24,7 +24,7 @@
         <% end %>
       </tbody>
     </table>
-    <%= link_to 'Add Product', new_product_path %>
+    <%= link_to 'Add Product', new_product_path, remote: true %>
   <% else %>
     <table class="table">
       <thead>

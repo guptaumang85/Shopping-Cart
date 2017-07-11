@@ -10,7 +10,7 @@ end
 gem 'rails', '~> 5.1.1'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-
+gem 'nested_form'
 gem 'bcrypt-ruby'
 gem 'bootstrap-sass'
 gem 'rails_bootstrap_navbar'

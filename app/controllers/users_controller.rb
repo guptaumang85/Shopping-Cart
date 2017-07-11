@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :require_logout, only: [:new, :create]
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def create
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.build_picture
   end
 
   def edit
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :last_name, :first_name, :date_of_birth, :contact_number)
+    params.require(:user).permit(:email, :password, :last_name, :first_name, :date_of_birth, :contact_number, picture_attributes: [:image])
   end
 
 end

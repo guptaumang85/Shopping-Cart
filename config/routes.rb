@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get		 '/user/edit', to: 'users#edit'
   post    '/user/edit', to: 'users#update'
+  get     '/user/show', to: 'users#show'
 
 
   mount Sidekiq::Web => '/sidekiq'

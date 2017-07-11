@@ -22,7 +22,7 @@
             <%= f.submit "Update Quantity"%>
           <% end %>
         </td>
-        <td><%= link_to "Delete Product", cart_path(cart_product), method: :delete %></td>
+        <td><%= link_to "Delete Product", cart_path(cart_product), method: :delete,:data => {:confirm => 'Are you sure?'} %></td>
         
       </tr>
     <% end %>

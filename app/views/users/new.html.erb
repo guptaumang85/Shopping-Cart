@@ -1,38 +1,10 @@
 <% provide(:title, 'Sign up') %>
 <h1>Sign up</h1>
 
-<%= form_for :user, url: signup_path do |f| %>
-   <%= render 'shared/error_messages' %>
-  <p>
-    <%= f.label :email %><br>
-    <%= f.text_field :email%>
-  </p>
+<%= nested_form_for :user, url: signup_path, html: { multipart: true } do |f| %>
 
-  <p>
-    <%= f.label :password %><br>
-     <%= f.password_field :password %>
-  </p>
+  <%= render(:partial => "form", :locals => {:f => f}) %>
 
-  <p>
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </p>
-
-  <p>
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </p>
-  
-  <p>
-    <%= f.label :date_of_birth %><br>
-    <%= f.date_field :date_of_birth %>
-  </p>
-
-  <p>
-    <%= f.label :contact_number %><br>
-    <%= f.text_field :contact_number %>
-  </p>
-
-    <%= f.submit :"Sign Up" %>
+  <%= f.submit :"Sign Up" %>
 
 <% end %>
